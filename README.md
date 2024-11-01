@@ -10,18 +10,17 @@ The program calculates the likelihood of winning for a given hand, simulating po
 - Simulates multiple poker rounds to determine hand win probability.
 
 ## Example Output
+```
+Your hand:
+8 of Diamonds  
+9 of Diamonds
 
-**Player's Hand**  
-`8 of Diamonds`  
-`9 of Diamonds`
+How many Simulations: 10,000,000
 
-**Simulation Settings**  
-`Number of Simulations`: 10,000,000
-
-**Results**  
-- **Player won**: `1,269,811` out of `10,000,000` simulations  
-- **Win percentage**: `12.70%`  
-- **Execution time**: `57706.86 ms`  
-- **Speed**: `173,289.61 simulations/second`
-
+Results:
+Player won: 1,269,811 out of 10,000,000 simulations.
+Win percentage: 12.70%
+Execution time: 57706.86 ms
+Speed: 173,289.61 simulations/second
+```
   
