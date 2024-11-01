@@ -59,13 +59,11 @@ public class Player {
         int consecutive = 0;
         int previousRankIndex = -1;
 
-        // Combine player's hand with community cards
         List<Card> allCards = new ArrayList<>(hand);
         allCards.addAll(table.getTable());
 
         if (allCards.isEmpty()) return HandRank.HIGH_CARD;
 
-        // Count ranks and suits
         for (Card card : allCards) {
             String rank = card.getRank();
             String suit = card.getSuit();
@@ -73,12 +71,11 @@ public class Player {
             rankCount.put(rank, rankCount.getOrDefault(rank, 0) + 1);
             suitCount.put(suit, suitCount.getOrDefault(suit, 0) + 1);
 
-            // Check for consecutive ranks
             int currentRankIndex = getRankIndex(rank);
             if (previousRankIndex == -1 || currentRankIndex == previousRankIndex + 1) {
                 consecutive++;
             } else if (previousRankIndex != -1 && currentRankIndex != previousRankIndex) {
-                consecutive = 1; // Reset if not consecutive
+                consecutive = 1;
             }
             previousRankIndex = currentRankIndex;
         }
@@ -90,7 +87,6 @@ public class Player {
         boolean hasPair = rankCount.containsValue(2);
         boolean hasTwoPairs = rankCount.values().stream().filter(count -> count == 2).count() == 2;
 
-        // Evaluate hand based on counts
         if (isFlush && consecutive == 5 && previousRankIndex == 12) {
             return HandRank.ROYAL_FLUSH;
         } else if (isFlush && consecutive == 5) {

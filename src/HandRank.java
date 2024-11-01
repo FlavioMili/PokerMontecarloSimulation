@@ -44,7 +44,7 @@ public class HandRank {
     }
 
     public List<Card> getKickers() {
-        return new ArrayList<>(kickers);  // Return a defensive copy
+        return new ArrayList<>(kickers);
     }
 
     public void setKickers(List<Card> newKickers) {
@@ -58,15 +58,12 @@ public class HandRank {
             return false;
         }
 
-        // Create local copies for thread-safe sorting
         List<Card> thisKickers = new ArrayList<>(this.kickers);
         List<Card> otherKickers = new ArrayList<>(other.kickers);
 
-        // Sort the copies
         thisKickers.sort((c1, c2) -> getRankIndex(c2.getRank()) - getRankIndex(c1.getRank()));
         otherKickers.sort((c1, c2) -> getRankIndex(c2.getRank()) - getRankIndex(c1.getRank()));
 
-        // Compare kickers
         int size = Math.min(thisKickers.size(), otherKickers.size());
         for (int i = 0; i < size; i++) {
             int thisKickerValue = getRankIndex(thisKickers.get(i).getRank());

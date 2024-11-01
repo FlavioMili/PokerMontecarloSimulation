@@ -12,14 +12,12 @@ public class Main {
             Player player = new Player();
             player.drawCard(deck);
 
-            // Display the player's hand
             System.out.println("Your hand:");
             for (Card card : player.getHand()) {
                 System.out.println(card.toString());
             }
 
-            // Run simulations
-            System.out.println("\nHow many simulations? (recommended: 1,000,000+)");
+            System.out.println("\nHow many simulations?");
             int numSim = in.nextInt();
 
             if (numSim <= 0) {
@@ -27,18 +25,14 @@ public class Main {
                 return;
             }
 
-            // Record start time with nanosecond precision
             long startTime = System.nanoTime();
 
             try {
-                // Initialize and run the Monte Carlo simulation
                 MonteCarloSimulation simulation = new MonteCarloSimulation(deck, player, numSim);
                 simulation.simulate();
 
-                // Calculate execution time in milliseconds
                 double executionTime = (System.nanoTime() - startTime) / 1_000_000.0;
 
-                // Output results
                 printResults(simulation.getTotalWins(), numSim, executionTime);
             } catch (RuntimeException e) {
                 System.err.println("Simulation failed: " + e.getMessage());

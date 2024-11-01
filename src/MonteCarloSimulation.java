@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class MonteCarloSimulation {
+public class MonteCarloSimulation{
     private final Deck originalDeck;
     private final Player player;
     private final int numSim;
